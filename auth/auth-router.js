@@ -7,7 +7,7 @@ const Users = require('../users/users-model')
 router.post('/register', (req, res) => {
   const credentials = req.body
 
-  if(credentials) {
+  if(credentials.username && credentials.password) {
     const iterations = process.env.BCRYPT_ITERATIONS || 8
 
     const hash = bcrypt.hashSync(credentials.password, iterations)
